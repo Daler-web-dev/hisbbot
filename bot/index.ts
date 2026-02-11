@@ -1,4 +1,5 @@
 import { Bot } from "grammy";
+import { handleStart } from "./handlers/start";
 import { handleTransactionText } from "./handlers/transaction";
 
 const token = process.env.BOT_TOKEN;
@@ -12,4 +13,5 @@ export function ensureInit(): Promise<void> {
   return initPromise;
 }
 
+bot.command("start", handleStart);
 bot.on("message:text", handleTransactionText);
